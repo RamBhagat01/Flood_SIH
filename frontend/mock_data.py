@@ -121,3 +121,48 @@ def get_river_status():
         "available": False,
         "message": "River-level integration — planned / data unavailable in prototype.",
     }
+
+def get_historical_replay_data(hour: int):
+    """Mock data simulating the 2015 Chennai flood progression (0 to 72 hours)."""
+    rng = np.random.default_rng(2015)
+    progress = min(hour / 48.0, 1.0)
+
+    n_points = 35
+    lats = CHENNAI_CENTER[0] + rng.normal(0, 0.06, n_points)
+    lons = CHENNAI_CENTER[1] + rng.normal(0, 0.06, n_points)
+
+    base_prob = rng.uniform(0.1, 0.3, n_points)
+    flood_prob = np.clip(base_prob + progress * rng.uniform(0.2, 0.65, n_points), 0, 0.99)
+    rainfall_mm = progress * rng.uniform(80, 420, n_points)
+
+    points = []
+    for i in range(n_points):
+        points.append({
+            "lat": round(float(lats[i]), 4),
+            "lon": round(float(lons[i]), 4),
+            "flood_probability": round(float(flood_prob[i]), 2),
+            "rainfall_mm": round(float(rainfall_mm[i]), 1),
+        })
+
+    avg_rainfall = round(float(np.mean(rainfall_mm)), 1)
+    affected_pct = round(float(np.mean(flood_prob > 0.5)) * 100, 1)
+    water_level_cm = round(progress * 195 + rng.normal(0, 8), 1)
+
+    if hour <= 6:
+        narrative = "🌧 Hour 0-6: Continuous heavy rainfall starts across Chennai. Water logging reported in low-lying roads."
+    elif hour <= 18:
+        narrative = "🌊 Hour 6-18: Chembarambakkam reservoir release increases. Adyar & Cooum rivers swelling."
+    elif hour <= 36:
+        narrative = "🚨 Hour 18-36: Severe inundation in Velachery, Mudichur, Saidapet, and Tambaram."
+    elif hour <= 54:
+        narrative = "⚠️ Hour 36-54: Peak catastrophe. Airport runway flooded, power grid cut off in multiple zones."
+    else:
+        narrative = "📉 Hour 54-72: Rain subsides. NDMA and military rescue boats deployed in high-risk zones."
+
+    return {
+        "points": points,
+        "avg_rainfall_mm": avg_rainfall,
+        "affected_area_pct": affected_pct,
+        "water_level_cm": max(water_level_cm, 0),
+        "narrative": narrative,
+    }
