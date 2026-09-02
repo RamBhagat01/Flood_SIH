@@ -256,3 +256,183 @@ def get_pincode_data():
             "nearest_shelter": "Anna Nagar Tower Park Community Center (0.3 km away)",
         },
     }
+
+def get_active_alerts():
+    """Mock database of active emergency broadcast alerts."""
+    return pd.DataFrame([
+        {
+            "Alert ID": "ALT-9021",
+            "Target Zone": "Velachery (600042)",
+            "Risk Level": "VERY HIGH",
+            "Channel": "SMS + WhatsApp + Siren",
+            "Recipients": "45,200",
+            "Sent Time": "10 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9022",
+            "Target Zone": "OMR Perungudi (600096)",
+            "Risk Level": "HIGH",
+            "Channel": "SMS + WhatsApp",
+            "Recipients": "32,800",
+            "Sent Time": "25 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9023",
+            "Target Zone": "Tambaram (600045)",
+            "Risk Level": "HIGH",
+            "Channel": "Cell Broadcast (CAP)",
+            "Recipients": "61,000",
+            "Sent Time": "40 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9024",
+            "Target Zone": "T. Nagar (600017)",
+            "Risk Level": "ELEVATED",
+            "Channel": "SMS Advisory",
+            "Recipients": "28,500",
+            "Sent Time": "1 hour ago",
+            "Status": "DELIVERED",
+        },
+    ])
+
+
+def get_rescue_team_status():
+    """Mock database of NDRF and Fire & Rescue team deployments."""
+    return pd.DataFrame([
+        {
+            "Team ID": "NDRF-01",
+            "Unit Name": "4th Battalion NDRF",
+            "Assigned Zone": "Velachery",
+            "Boats Deployed": 6,
+            "Personnel": 24,
+            "Status": "ACTIVE RESCUE",
+        },
+        {
+            "Team ID": "NDRF-04",
+            "Unit Name": "4th Battalion NDRF",
+            "Assigned Zone": "Tambaram / Mudichur",
+            "Boats Deployed": 8,
+            "Personnel": 30,
+            "Status": "ACTIVE RESCUE",
+        },
+        {
+            "Team ID": "TNSFRS-02",
+            "Unit Name": "TN Fire & Rescue Services",
+            "Assigned Zone": "OMR Perungudi",
+            "Boats Deployed": 3,
+            "Personnel": 15,
+            "Status": "EN ROUTE",
+        },
+        {
+            "Team ID": "TNSFRS-05",
+            "Unit Name": "TN Fire & Rescue Services",
+            "Assigned Zone": "Anna Nagar",
+            "Boats Deployed": 0,
+            "Personnel": 12,
+            "Status": "STANDBY",
+        },
+    ])
+
+
+def get_evacuation_routes():
+    """Mock data for safe evacuation routes vs closed roads."""
+    return pd.DataFrame([
+        {"Route Name": "Velachery Main Rd -> Guindy Flyover", "Status": "SUBMERGED (CLOSED)", "Risk": "CRITICAL"},
+        {"Route Name": "OMR Tollgate -> Madhya Kailash", "Status": "PASSABLE (WATERLOGGED)", "Risk": "MODERATE"},
+        {"Route Name": "GST Road -> Airport Flyover", "Status": "OPEN & SAFE", "Risk": "LOW"},
+        {"Route Name": "Inner Ring Road -> Koyambedu", "Status": "OPEN & SAFE", "Risk": "LOW"},
+        {"Route Name": "Mudichur Road -> Tambaram West", "Status": "SUBMERGED (CLOSED)", "Risk": "CRITICAL"},
+    ])
+
+def get_active_alerts():
+    """Mock database of active emergency broadcast alerts."""
+    return pd.DataFrame([
+        {
+            "Alert ID": "ALT-9021",
+            "Target Zone": "Velachery (600042)",
+            "Risk Level": "VERY HIGH",
+            "Channel": "SMS + WhatsApp + Siren",
+            "Recipients": "45,200",
+            "Sent Time": "10 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9022",
+            "Target Zone": "OMR Perungudi (600096)",
+            "Risk Level": "HIGH",
+            "Channel": "SMS + WhatsApp",
+            "Recipients": "32,800",
+            "Sent Time": "25 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9023",
+            "Target Zone": "Tambaram (600045)",
+            "Risk Level": "HIGH",
+            "Channel": "Cell Broadcast (CAP)",
+            "Recipients": "61,000",
+            "Sent Time": "40 mins ago",
+            "Status": "DELIVERED",
+        },
+        {
+            "Alert ID": "ALT-9024",
+            "Target Zone": "T. Nagar (600017)",
+            "Risk Level": "ELEVATED",
+            "Channel": "SMS Advisory",
+            "Recipients": "28,500",
+            "Sent Time": "1 hour ago",
+            "Status": "DELIVERED",
+        },
+    ])
+
+
+def get_rescue_team_status():
+    """Mock database of NDRF and Fire & Rescue team deployments."""
+    return pd.DataFrame([
+        {
+            "Team ID": "NDRF-01",
+            "Unit Name": "4th Battalion NDRF",
+            "Assigned Zone": "Velachery",
+            "Boats Deployed": 6,
+            "Personnel": 24,
+            "Status": "ACTIVE RESCUE",
+        },
+        {
+            "Team ID": "NDRF-04",
+            "Unit Name": "4th Battalion NDRF",
+            "Assigned Zone": "Tambaram / Mudichur",
+            "Boats Deployed": 8,
+            "Personnel": 30,
+            "Status": "ACTIVE RESCUE",
+        },
+        {
+            "Team ID": "TNSFRS-02",
+            "Unit Name": "TN Fire & Rescue Services",
+            "Assigned Zone": "OMR Perungudi",
+            "Boats Deployed": 3,
+            "Personnel": 15,
+            "Status": "EN ROUTE",
+        },
+        {
+            "Team ID": "TNSFRS-05",
+            "Unit Name": "TN Fire & Rescue Services",
+            "Assigned Zone": "Anna Nagar",
+            "Boats Deployed": 0,
+            "Personnel": 12,
+            "Status": "STANDBY",
+        },
+    ])
+
+
+def get_evacuation_routes():
+    """Mock data for safe evacuation routes vs closed roads."""
+    return pd.DataFrame([
+        {"Route Name": "Velachery Main Rd -> Guindy Flyover", "Status": "SUBMERGED (CLOSED)", "Risk": "CRITICAL"},
+        {"Route Name": "OMR Tollgate -> Madhya Kailash", "Status": "PASSABLE (WATERLOGGED)", "Risk": "MODERATE"},
+        {"Route Name": "GST Road -> Airport Flyover", "Status": "OPEN & SAFE", "Risk": "LOW"},
+        {"Route Name": "Inner Ring Road -> Koyambedu", "Status": "OPEN & SAFE", "Risk": "LOW"},
+        {"Route Name": "Mudichur Road -> Tambaram West", "Status": "SUBMERGED (CLOSED)", "Risk": "CRITICAL"},
+    ])
